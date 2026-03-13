@@ -1,25 +1,28 @@
-import java.util.Stack;
-import java.util.Scanner;
+import java.util.*;
 public class PalindromeCheckerApp {
-    public static boolean isPalindrome(String input) {
-        String cleanInput = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < cleanInput.length(); i++) {
-            stack.push(cleanInput.charAt(i));
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        Deque<Character> deque = new ArrayDeque<>();
+        for (int i = 0; i < input.length(); i++) {
+            deque.addLast(input.charAt(i));
         }
-        for (int i = 0; i < cleanInput.length(); i++) {
-            if (cleanInput.charAt(i) != stack.pop()) {
-                return false;
+        boolean isPalindrome = true;
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+            if (front != rear) {
+                isPalindrome = false;
+                break;
             }
         }
-        return true;
-    }
-    public static void main(String[] args) {
-        String testWord = "noon";
-        if (isPalindrome(testWord)) {
-            System.out.println("'" + testWord + "' is a    Palindrome!");
+        if (isPalindrome) {
+            System.out.println("The string is a Palindrome.");
         } else {
-            System.out.println("'" + testWord + "' is NOT a Palindrome.");
+            System.out.println("The string is NOT a Palindrome.");
         }
+        sc.close();
     }
 }
