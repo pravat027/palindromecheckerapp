@@ -1,6 +1,19 @@
 import java.util.*;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        Deque<Character> deque = new ArrayDeque<>();
+        for (int i = 0; i < input.length(); i++) {
+            deque.addLast(input.charAt(i));
+        }
+        boolean isPalindrome = true;
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+            if (front != rear) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
@@ -22,6 +35,7 @@ public class PalindromeCheckerApp {
             }
         }
         if (isPalindrome) {
+            System.out.println("The string is a Palindrome.");
             System.out.println("The string is  a Palindrome.");
         } else {
             System.out.println("The string is NOT a Palindrome.");
