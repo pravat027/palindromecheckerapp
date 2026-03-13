@@ -17,7 +17,7 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
         String testWord = "noon";
         if (isPalindrome(testWord)) {
-            System.out.println("'" + testWord + "' is a Palindrome!");
+            System.out.println("'" + testWord + "' is a    Palindrome!");
         } else {
             System.out.println("'" + testWord + "' is NOT a Palindrome.");
         }
